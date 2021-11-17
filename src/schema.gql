@@ -1,0 +1,138 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Journal {
+  id: Int!
+  name: String!
+  Notes: String!
+  student: Journal!
+}
+
+type Member {
+  id: Int!
+}
+
+type User {
+  id: Int!
+  name: String!
+  phonenumber: String!
+  email: String!
+  password: String!
+  role: String!
+}
+
+type School {
+  id: Int!
+  user: User!
+  teacher: [Teacher!]!
+}
+
+type Teacher {
+  id: Int!
+  student: [Student!]
+  school: School!
+}
+
+type Student {
+  id: Int!
+  journals: [Journal!]
+  teacher: Journal!
+}
+
+type Query {
+  student(id: Int!): Student!
+  journal(id: Int!): Journal!
+  teacher(id: Int!): Teacher!
+  school(id: Int!): School!
+  users: [User!]!
+  user(id: Int!): User!
+  member(id: Int!): Member!
+}
+
+type Mutation {
+  createStudent(createStudentInput: CreateStudentInput!): Student!
+  updateStudent(updateStudentInput: UpdateStudentInput!): Student!
+  removeStudent(id: Int!): Student!
+  createJournal(createJournalInput: CreateJournalInput!): Journal!
+  updateJournal(updateJournalInput: UpdateJournalInput!): Journal!
+  removeJournal(id: Int!): Journal!
+  createTeacher(createTeacherInput: CreateTeacherInput!): Teacher!
+  updateTeacher(updateTeacherInput: UpdateTeacherInput!): Teacher!
+  removeTeacher(id: Int!): Teacher!
+  createSchool(createSchoolInput: CreateSchoolInput!): School!
+  updateSchool(updateSchoolInput: UpdateSchoolInput!): School!
+  removeSchool(id: Int!): School!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  createMember(createMemberInput: CreateMemberInput!): Member!
+  updateMember(updateMemberInput: UpdateMemberInput!): Member!
+  removeMember(id: Int!): Member!
+}
+
+input CreateStudentInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateStudentInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateJournalInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateJournalInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateTeacherInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateTeacherInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateSchoolInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateSchoolInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateMemberInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateMemberInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
