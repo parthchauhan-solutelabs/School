@@ -9,8 +9,12 @@ type Journal {
   student: Journal!
 }
 
-type Member {
+type Teacher {
   id: Int!
+  age: Int!
+  student: [Student!]
+  school: School!
+  user: User!
 }
 
 type User {
@@ -22,31 +26,37 @@ type User {
   role: String!
 }
 
-type School {
+type Member {
   id: Int!
+  age: Int!
   user: User!
-  teacher: [Teacher!]!
 }
 
-type Teacher {
+type School {
   id: Int!
-  student: [Student!]
-  school: School!
+  name: String!
+  user: User!
+  teacher: [Teacher!]!
+  student: [Student!]!
 }
 
 type Student {
   id: Int!
+  Roll_no: Int!
+  age: Int!
   journals: [Journal!]
   teacher: Journal!
+  school: School!
+  user: User!
 }
 
 type Query {
   student(id: Int!): Student!
   journal(id: Int!): Journal!
-  teacher(id: Int!): Teacher!
-  school(id: Int!): School!
   users: [User!]!
   user(id: Int!): User!
+  teacher(id: Int!): Teacher!
+  school(id: Int!): School!
   member(id: Int!): Member!
 }
 
@@ -57,82 +67,82 @@ type Mutation {
   createJournal(createJournalInput: CreateJournalInput!): Journal!
   updateJournal(updateJournalInput: UpdateJournalInput!): Journal!
   removeJournal(id: Int!): Journal!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
   createTeacher(createTeacherInput: CreateTeacherInput!): Teacher!
   updateTeacher(updateTeacherInput: UpdateTeacherInput!): Teacher!
   removeTeacher(id: Int!): Teacher!
   createSchool(createSchoolInput: CreateSchoolInput!): School!
   updateSchool(updateSchoolInput: UpdateSchoolInput!): School!
   removeSchool(id: Int!): School!
-  createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User!
   createMember(createMemberInput: CreateMemberInput!): Member!
   updateMember(updateMemberInput: UpdateMemberInput!): Member!
   removeMember(id: Int!): Member!
 }
 
 input CreateStudentInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  Roll_no: Int!
+  age: Int!
 }
 
 input UpdateStudentInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  Roll_no: Int
+  age: Int
   id: Int!
 }
 
 input CreateJournalInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  Notes: String!
 }
 
 input UpdateJournalInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
-}
-
-input CreateTeacherInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateTeacherInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
-}
-
-input CreateSchoolInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateSchoolInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
+  Notes: String
   id: Int!
 }
 
 input CreateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String
+  email: String
+  password: String
+  phonenumber: String
+  role: String
 }
 
 input UpdateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  name: String
+  email: String
+  password: String
+  phonenumber: String
+  role: String
+  id: Int!
+}
+
+input CreateTeacherInput {
+  age: Int!
+}
+
+input UpdateTeacherInput {
+  age: Int
+  id: Int!
+}
+
+input CreateSchoolInput {
+  name: String!
+}
+
+input UpdateSchoolInput {
+  name: String
   id: Int!
 }
 
 input CreateMemberInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  age: Int!
 }
 
 input UpdateMemberInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  age: Int
   id: Int!
 }

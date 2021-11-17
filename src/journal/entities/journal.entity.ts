@@ -1,6 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Student } from 'src/student/entities/student.entity';
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -16,6 +16,12 @@ export class Journal {
   @Column()
   @Field()
   Notes: string;
+
+  @CreateDateColumn({ nullable: true, default: () => 'CURRENT_TIMESTAMP' })
+  createdAt?: Date;
+
+  @UpdateDateColumn()
+  updatedAt?: Date;
 
   @ManyToOne(() => Student, student => student.journals)
   @Field(type => Journal)

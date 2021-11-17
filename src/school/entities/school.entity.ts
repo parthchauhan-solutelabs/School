@@ -1,5 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql';
 import { Member } from 'src/member/entities/member.entity';
+import { Student } from 'src/student/entities/student.entity';
 import { Teacher } from 'src/teacher/entities/teacher.entity';
 import { User } from 'src/users/entities/user.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, JoinColumn, OneToOne, ManyToOne } from 'typeorm';
@@ -11,6 +12,10 @@ export class School {
   @Field(type => Int)
   id: number;
 
+  @Column()
+  @Field()
+  name: string;
+
   @ManyToOne(() => User, user => user.school)
   @Field(type => User)
   user: User;
@@ -21,4 +26,9 @@ export class School {
 
   @OneToOne(() => Member, member => member.school) // specify inverse side as a second parameter
   member: Member;
+
+  @OneToMany(() => Student, student => student.school)
+  @Field(type => [Student])
+  student?: Student[];
+
 }

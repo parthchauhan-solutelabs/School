@@ -7,6 +7,7 @@ import { SchoolModule } from '../school/school.module';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Member]), SchoolModule],
-  providers: [MemberResolver, MemberService]
+  providers: [MemberResolver, MemberService],
+  exports: [MemberService]
 })
 export class MemberModule {}
