@@ -8,7 +8,7 @@ import { Member } from './entities/member.entity';
 
 @Injectable()
 export class MemberService {
-  constructor(@InjectRepository(Member) private memberService: Repository<Member>, private schoolService: SchoolService){}
+  constructor(@InjectRepository(Member) private memberService: Repository<Member>){}
   create(createMemberInput: CreateMemberInput) {
     return 'This action adds a new member';
   }

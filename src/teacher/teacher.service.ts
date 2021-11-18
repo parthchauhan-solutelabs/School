@@ -8,7 +8,7 @@ import { Teacher } from './entities/teacher.entity';
 
 @Injectable()
 export class TeacherService {
-  constructor(@InjectRepository(Teacher) private teacherRepository: Repository<Teacher>, private schoolService: SchoolService) {}
+  constructor(@InjectRepository(Teacher) private teacherRepository: Repository<Teacher>) {}
 
   create(createTeacherInput: CreateTeacherInput) {
     return 'This action adds a new teacher';

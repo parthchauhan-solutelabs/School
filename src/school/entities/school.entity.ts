@@ -24,7 +24,8 @@ export class School {
   @Field(type => [Teacher])
   teacher?: Teacher[];
 
-  @OneToOne(() => Member, member => member.school) // specify inverse side as a second parameter
+  @OneToOne(() => School, school => school.member, { nullable: true, createForeignKeyConstraints: false })
+  @JoinColumn({ name: 'member_id' })
   member: Member;
 
   @OneToMany(() => Student, student => student.school)

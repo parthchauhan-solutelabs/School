@@ -7,7 +7,7 @@ import { SchoolModule } from 'src/school/school.module';
 import { UsersModule } from 'src/users/users.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Teacher]), UsersModule, forwardRef(() => SchoolModule) ],
+  imports: [TypeOrmModule.forFeature([Teacher]) ],
   providers: [TeacherResolver, TeacherService],
   exports: [TeacherService]
 

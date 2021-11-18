@@ -6,7 +6,8 @@ import { Journal } from './entities/journal.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Journal]), forwardRef(() => StudentModule)],
-  providers: [JournalResolver, JournalService]
+  imports: [TypeOrmModule.forFeature([Journal]), ],
+  providers: [JournalResolver, JournalService],
+  exports: [JournalService]
 })
 export class JournalModule {}

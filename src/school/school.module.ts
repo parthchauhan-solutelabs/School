@@ -8,8 +8,8 @@ import { MemberModule } from 'src/member/member.module';
 import { TeacherModule } from 'src/teacher/teacher.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([School]), MemberModule, TeacherModule, forwardRef(() => UsersModule)],
+  imports: [TypeOrmModule.forFeature([School])],
   providers: [SchoolResolver, SchoolService],
   exports: [SchoolService]
 })
-export class SchoolModule {}
+export class SchoolModule { }

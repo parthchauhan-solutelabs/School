@@ -52,24 +52,18 @@ type Student {
 
 type Query {
   student(id: Int!): Student!
-  journal(id: Int!): Journal!
-  users: [User!]!
-  user(id: Int!): User!
   teacher(id: Int!): Teacher!
   school(id: Int!): School!
   member(id: Int!): Member!
+  journal(id: Int!): Journal!
+  users: [User!]!
+  user(id: Int!): User!
 }
 
 type Mutation {
   createStudent(createStudentInput: CreateStudentInput!): Student!
   updateStudent(updateStudentInput: UpdateStudentInput!): Student!
   removeStudent(id: Int!): Student!
-  createJournal(createJournalInput: CreateJournalInput!): Journal!
-  updateJournal(updateJournalInput: UpdateJournalInput!): Journal!
-  removeJournal(id: Int!): Journal!
-  createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User!
   createTeacher(createTeacherInput: CreateTeacherInput!): Teacher!
   updateTeacher(updateTeacherInput: UpdateTeacherInput!): Teacher!
   removeTeacher(id: Int!): Teacher!
@@ -79,6 +73,12 @@ type Mutation {
   createMember(createMemberInput: CreateMemberInput!): Member!
   updateMember(updateMemberInput: UpdateMemberInput!): Member!
   removeMember(id: Int!): Member!
+  createJournal(createJournalInput: CreateJournalInput!): Journal!
+  updateJournal(updateJournalInput: UpdateJournalInput!): Journal!
+  removeJournal(id: Int!): Journal!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
 }
 
 input CreateStudentInput {
@@ -88,6 +88,33 @@ input CreateStudentInput {
 
 input UpdateStudentInput {
   Roll_no: Int
+  age: Int
+  id: Int!
+}
+
+input CreateTeacherInput {
+  age: Int!
+}
+
+input UpdateTeacherInput {
+  age: Int
+  id: Int!
+}
+
+input CreateSchoolInput {
+  name: String!
+}
+
+input UpdateSchoolInput {
+  name: String
+  id: Int!
+}
+
+input CreateMemberInput {
+  age: Int!
+}
+
+input UpdateMemberInput {
   age: Int
   id: Int!
 }
@@ -117,32 +144,5 @@ input UpdateUserInput {
   password: String
   phonenumber: String
   role: String
-  id: Int!
-}
-
-input CreateTeacherInput {
-  age: Int!
-}
-
-input UpdateTeacherInput {
-  age: Int
-  id: Int!
-}
-
-input CreateSchoolInput {
-  name: String!
-}
-
-input UpdateSchoolInput {
-  name: String
-  id: Int!
-}
-
-input CreateMemberInput {
-  age: Int!
-}
-
-input UpdateMemberInput {
-  age: Int
   id: Int!
 }
